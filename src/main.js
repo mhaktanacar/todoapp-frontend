@@ -6,7 +6,7 @@ import VueGoodTablePlugin from 'vue-good-table';
 import VueRouter from 'vue-router';
 import routes from './routes';
 
-axios.defaults.baseURL = 'http://localhost:8082'
+axios.defaults.baseURL = 'http://whattodo-env.eba-8mztkigm.us-east-2.elasticbeanstalk.com/';
 
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'

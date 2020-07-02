@@ -8,6 +8,8 @@ const routes = [
     { path: '/register', component: Register },
     { path: '/login', component: Login },
     { path: '/todos/:username', component: Todos },
+    { path: '/todos/testuser1', component: Todos },
+
 ];
 
 export default routes;

@@ -43,7 +43,7 @@ export default {
     },
     methods: {
         addUser() {
-            axios.post('http://localhost:8082/api/users/', {
+            axios.post('http://whattodo-env.eba-8mztkigm.us-east-2.elasticbeanstalk.com/api/users/', {
                     username: this.userNameBody,
                     email: this.emailBody,
                     password: this.passwordBody

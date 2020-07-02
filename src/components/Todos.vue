@@ -9,7 +9,7 @@
                     <b-button v-b-modal.modal-1>Add New List</b-button>
 
                     <b-modal id="modal-1" title="Add New List">
-                        <b-form-input v-model="postListBody" placeholder="Enter list name"></b-form-input>
+                        <b-form-input v-model="postListBody" placeholder="Enter list name"></b-form-input><br>
                         <b-button variant="success" id="addList" @click="addList">Add New List</b-button>
 
                     </b-modal>
@@ -86,6 +86,7 @@
                                     <br>
                                     <b-form-input v-model="statusBody" placeholder="Enter element status"></b-form-input>
                                     <br>
+                                    <label for="example-datepicker">Add Dependency</label>
                                     <b-form-select v-model="dependencyBody" :options="selectedList.todoElements" value-field="id" text-field="name"></b-form-select>
                                     <br>
 
@@ -102,7 +103,6 @@
     enabled: true,
   }" :search-options="{ enabled: true }">
                         <div slot="selected-row-actions">
-                            <button>Action 1</button>
                         </div>
                     </vue-good-table>
                 </b-col>
@@ -159,7 +159,7 @@ const Todos = {
         }
     },
     mounted() {
-        axios.get('http://localhost:8082/api/' + this.$route.params.username + '/todolists/')
+        axios.get('http://whattodo-env.eba-8mztkigm.us-east-2.elasticbeanstalk.com/api/' + this.$route.params.username + '/todolists/')
             .then(response => (this.todos = response.data))
             .catch(error => {
                 console.log(error);
@@ -170,14 +170,19 @@ const Todos = {
     methods: {
         showListofTodos() {
             let x = document.getElementById("todoLists");
+            let y = document.getElementById("selectedList");
+
             if (x.style.display === "none") {
                 x.style.display = "block";
-            } else {
-                x.style.display = "none";
+            } 
+
+            if (x.style.display === "block" && y.style.display === "block") {
+                 x.style.display = "none";
+                y.style.display = "none";
             }
         },
         addList() {
-            axios.post('http://:8082/api/todolists/', {
+            axios.post('http://whattodo-env.eba-8mztkigm.us-east-2.elasticbeanstalk.com/api/todolists/', {
                     name: this.postListBody
                 })
                 .then(response => {
@@ -188,7 +193,7 @@ const Todos = {
                 });
         },
         addElementToList(id) {
-            axios.post('http://localhost:8082/api//todoelement/' + id + '/', {
+            axios.post('http://whattodo-env.eba-8mztkigm.us-east-2.elasticbeanstalk.com/api/todoelement/' + id + '/', {
                     name: this.nameBody,
                     description: this.descriptionBody,
                     deadline: this.deadlineBody,
@@ -200,7 +205,7 @@ const Todos = {
                 });
         },
         getList(id) {
-            axios.get('http://localhost:8082/api/todolists/' + id + '/')
+            axios.get('http://whattodo-env.eba-8mztkigm.us-east-2.elasticbeanstalk.com/api/todolists/' + id + '/')
                 .then(response => (this.selectedList = response.data))
                 .catch(error => {
                     console.log(error);
@@ -217,13 +222,13 @@ const Todos = {
             console.log(number)
         },
         deleteList(id) {
-            axios.delete('http://localhost:8082/api/todolists/' + id + '/');
+            axios.delete('http://whattodo-env.eba-8mztkigm.us-east-2.elasticbeanstalk.com/api/todolists/' + id + '/');
         },
         deleteElement(id) {
-            axios.delete('http://localhost:8082/api//todoelement/' + id + '/');
+            axios.delete('http://whattodo-env.eba-8mztkigm.us-east-2.elasticbeanstalk.com/todoelement/' + id + '/');
         },
         completeStatus(id) {
-            axios.put('http://localhost:8082/api//todoelement/' + id + '/', {
+            axios.put('http://whattodo-env.eba-8mztkigm.us-east-2.elasticbeanstalk.com/todoelement/' + id + '/', {
                     status: 'Completed'
                 })
                 .catch(error => {

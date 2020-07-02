@@ -9,8 +9,8 @@
             </b-nav-item>
 
             <b-nav-item>
-                <router-link to='/todos'>
-                    <b-button variant="outline-primary">Todos</b-button>
+                <router-link to='/todos/testuser1'>
+                    <b-button variant="outline-primary">Sample List</b-button>
                 </router-link>
             </b-nav-item>
 

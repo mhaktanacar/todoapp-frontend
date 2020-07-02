@@ -47,7 +47,7 @@ export default {
     },
     methods: {
         getTodoPage(username) {
-            axios.get('http://localhost:8082/api/users/' + username + "/")
+            axios.get('http://whattodo-env.eba-8mztkigm.us-east-2.elasticbeanstalk.com/api/users/' + username + "/")
                 .then(response => (this.user = response.data.username))
                 .catch(error => {
                     alert(error)
