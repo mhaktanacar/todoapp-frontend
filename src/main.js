@@ -1,8 +1,31 @@
 import Vue from 'vue'
 import App from './App.vue'
+import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
+import axios from 'axios'
+import VueGoodTablePlugin from 'vue-good-table';
+import VueRouter from 'vue-router';
+import routes from './routes';
 
-Vue.config.productionTip = false
+axios.defaults.baseURL = 'http://localhost:8082'
+
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+import 'vue-good-table/dist/vue-good-table.css'
+
+
+Vue.use(BootstrapVue);
+Vue.use(IconsPlugin);
+Vue.use(VueGoodTablePlugin);
+
+
+Vue.use(VueRouter);
+const router = new VueRouter({ routes });
+
+
+
+Vue.config.productionTip = false;
 
 new Vue({
-  render: h => h(App),
+    router,
+    render: h => h(App)
 }).$mount('#app')
