@@ -6,7 +6,7 @@
                 <h3>Sign In</h3>
 
                 <div class="form-group">
-                    <label>User Name</label>
+                    <label>Username</label>
                     <input v-model="username" type="text" class="form-control form-control-lg" />
                 </div>
 
